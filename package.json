@@ -12,9 +12,12 @@
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
-    "test": "electron ."
+    "dev": "electron ."
   },
   "devDependencies": {
-    "electron": "^26.2.0"
+    "electron": "^44.7.2"
+  },
+  "allowScripts": {
+    "electron@26.6.10": true
   }
 }

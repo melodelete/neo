@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+body {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+.launcher {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(30,30,30,0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0,0,0,0.3);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+.launcher:hover {
+    background: rgba(40,40,40,0.95);
+    transform: scale(1.02);
+}
+.launcher-content {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+}
+.launcher-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+.launcher-button:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+}
+.launcher-button:active {
+    transform: scale(0.9);
+}
+.launcher-button.tooltip {
+    position: relative;
+}
+.launcher-button.tooltip::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+.launcher-button.tooltip:hover::after {
+    opacity: 1;
+}
+@media (max-width: 500px) {
+    .launcher {
+        width: 160px;
+        height: 160px;
+    }
+    .launcher-button {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+}
