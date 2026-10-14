@@ -1,0 +1,20 @@
+{
+  "name": "neo",
+  "version": "1.0.0",
+  "description": "An app launcher to do quick actions",
+  "keywords": [
+    "electron",
+    "launcher",
+    "productivity"
+  ],
+  "license": "MIT",
+  "author": "melodelete",
+  "type": "commonjs",
+  "main": "main.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^26.2.0"
+  }
+}
