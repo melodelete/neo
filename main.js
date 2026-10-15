@@ -12,6 +12,7 @@ function createWindow() {
         frame:false,
         skipTaskbar:true,
         alwaysOnTop:true,
+        show: false,
         webPreferences:{
             preload: path.join(__dirname, 'preload.js'),
         }
@@ -28,7 +29,7 @@ function createTray() {
         { label: 'Show Neo', click: () => showWindow()  },
         { label: 'Quit', click: () => app.quit() }
     ])
-    tray.setToolTip('Neo - Press Ctrl+Shift+Space to show launcher')
+    tray.setToolTip('Neo - Press ` or ~ to show launcher')
     tray.setContextMenu(contextMenu)
 }
 function showWindow() {
@@ -40,18 +41,23 @@ function showWindow() {
 app.whenReady().then(() => {
     createWindow()
     createTray()
-    setTimeout(() => {
-        showWindow()
-        console.log('Neo Launcher Shown')
-    }, 1000)
-    // SHortuct
-    const ret = globalShortcut.register('Control+Shift+Space', () => {
-        console.log('Shortcut activated')
+    // Shortcuts
+    const ret1 = globalShortcut.register('`', () => {
+        console.log('Backtick shortcut activated')
         showWindow()
     })
-    if (!ret) {
-        console.log('Shortcut registration failed')
+    const ret2 = globalShortcut.register('Shift+`', () => {
+        console.log('Tilde shortcut activated')
+        showWindow()
+    })
+    console.log(`Backtick shortcut registered: ${ret1}`)
+    console.log(`Tilde shortcut registered: ${ret2}`)
+    if (!ret1 || !ret2) {
+        console.log('One or more shortcut registrations failed')
+    } else {
+        console.log('Both shortcuts registered successfully')
     }
+    tray.setToolTip('Neo - Press Shift + ` or ~ to show launcher')
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
             createWindow()
