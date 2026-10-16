@@ -12,41 +12,82 @@ body {
     background: transparent;
 }
 .launcher {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: rgba(30,30,30,0.95);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(0,0,0,0.3);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    width: 200px;
+    height: 200px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
-    overflow: hidden;
 }
 .launcher:hover {
     background: rgba(40,40,40,0.95);
     transform: scale(1.02);
+}
+.launcher-ring {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    background: rgba(30,30,30,0.95);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.launcher-section {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-section {
+    transform: rotate(0deg) translateY(-70px) rotate(0deg);
+}
+.productivity-section {
+    transform: rotate(90deg) translateY(-70px) rotate(-90deg);
+}
+.entertainment-section {
+    transform: rotate(180deg) translateY(-70px) rotate(-180deg);
+}
+.utilities-section {
+    transform: rotate(270deg) translateY(-70px) rotate(-270deg);
 }
 .launcher-content {
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    padding: 20px;
+    gap: 8px;
+    padding: 100px;
+}
+.search-content {
+    transform: rotate(0deg);
+}
+.productivity-content {
+    transform: rotate(90deg);
+}
+.entertainment-content {
+    transform: rotate(180deg);
+}
+.utilities-content {
+    transform: rotate(270deg);
 }
 .launcher-button {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: rgba(255,255,255,0.1);
     border: 1px solid rgba(255,255,255,0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.2s ease;
     color: white;
@@ -82,12 +123,19 @@ body {
 }
 @media (max-width: 500px) {
     .launcher {
+        width: 180px;
+        height: 180px;
+    }
+    .launcher-ring {
         width: 160px;
         height: 160px;
     }
+    .launcher-section {
+        transform: rotate(0deg) translateY(-60px) rotate(0deg);
+    }
     .launcher-button {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
     }
 }
